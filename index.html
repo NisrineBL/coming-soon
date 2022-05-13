@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <span class="cover"></span>
+    <div class="global-container">
+        <div class="coming-soon">
+            <h1 id="word"></h1>
+            <h1 class="cursor">|</h1>
+        </div>
+        <p class="paragraph">
+
+            <!-- Here Where you can change your paragraph -->
+            Get notified when we launch
+        </p>
+        <div class="form-container">
+            <!-- Here is the form -->
+            <form action="#">
+                <input type="text" name="email" placeholder="Enter your email address" class="email" required>
+                <input type="submit" value="notify me" class="notify">
+            </form>
+
+        </div>
+        <p class="spam">
+            *Don't worry we will not spam you 😊
+        </p>
+        <div class="social-media">
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="assets/img/facebook.png" alt="" class="social-icon">
+            </a>
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="assets/img/instagram.png" alt="" class="social-icon">
+            </a>
+            <!-- Twitter Link -->
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="assets/img/twitter.png" alt="" class="social-icon">
+            </a>
+            <!-- Linkedin Link -->
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="assets/img/linkedin.png" alt="" class="social-icon">
+            </a>
+            <!-- Youtube Link -->
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="assets/img/youtube.png" alt="" class="social-icon">
+            </a>
+        </div>
+    </div>
+
+</body>
+    <script>
+        // Type your Texts inside ["...."] and separate it with , 
+        const words = ["We are Coming Soon", "Stay Tuned..."];
+
+        let i = 0;
+        let timer;
+
+        // Typing Effect 
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function () {
+                if (word.length > 0) {
+                    document.getElementById('word').innerHTML += word.shift();
+                } else {
+                    deletingEffect();
+                    return false;
+                };
+                timer = setTimeout(loopTyping, 600);
+            };
+            loopTyping();
+        };
+
+        // Deleting Effect
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function () {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('word').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    };
+                    typingEffect();
+                    return false;
+                };
+                timer = setTimeout(loopDeleting, 600);
+            };
+            loopDeleting();
+        };
+
+        typingEffect();
+
+    </script>
+
+</html>
